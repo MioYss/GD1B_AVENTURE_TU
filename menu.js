@@ -5,7 +5,7 @@ class menu extends Phaser.Scene {
     }
     preload() {
         this.load.image('ecran', 'assets/ecran_titre.png');
-     add
+     
         
     }
     create() {
