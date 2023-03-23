@@ -4,6 +4,7 @@ class manoir extends Phaser.Scene {
         super("manoir");
     }
 
+    //INITIALISATION DES DONNEES EN CHANGEANT DE SCENE
     init(data){ 
         this.positionX = data.x;
         this.positionY = data.y;
