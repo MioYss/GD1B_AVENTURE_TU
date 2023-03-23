@@ -78,7 +78,6 @@ export default class entre_manoir extends Phaser.Scene {
         
         //CREATION JOUEUR ET PROPRIETES
         this.player = new Player(this, 90,960, 'perso');
-        this.player.speed = 500; 
 
         // ajout du champs de la caméra de taille identique à celle du monde
         this.cameras.main.setBounds(0, 0, 1600, 1600);
