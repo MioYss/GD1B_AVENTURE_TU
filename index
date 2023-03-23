@@ -1,3 +1,6 @@
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -7,7 +10,11 @@
     <link rel="preload" as="font" href="assets/GrapeNuts-Regular.ttf" type="font/ttf" crossorigin/>
     <script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
     <!-- <script src="player.js"></script> -->
-    <script type="module" src="main.js"></script>
+    <script src="menu.js"></script>
+    <script src="manoir.js"></script>
+    <script src="entre_manoir.js"></script>
+    <script src="main.js"></script>
+    
     <style type="text/css">
         body {
             margin: 0;
@@ -22,5 +29,3 @@
 
 <body>
 </body>
-
-</html>
