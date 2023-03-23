@@ -13,23 +13,25 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     update() {
-        const setVelocityX = undefined; 
-        const setVelocityY = undefined;
+
 
         if (this.clavier.left.isDown){ //si la touche gauche est appuyée
-            this.player.setVelocityX(-160); //alors vitesse négative en X
+            this.setVelocityX(-160); //alors vitesse négative en X
         }
     
         else if (this.clavier.right.isDown){ //sinon si la touche droite est appuyée
-            this.player.setVelocityX(160); //alors vitesse positive en X
+            this.setVelocityX(160); //alors vitesse positive en X
         }
     
         else if (this.clavier.up.isDown){ // si touche bas appuyée 
-            this.player.setVelocityY(160); //vitesse 
+            this.setVelocityY(-160); //vitesse 
         }
     
         else if (this.clavier.down.isDown){ //si touche haut appuyée 
-            this.player.setVelocityY(-160); //alors vitesse verticale 
+            this.setVelocityY(160); //alors vitesse verticale 
         }
-    }
+        else {
+            this.setVelocityX(0) & this.setVelocityY (0)
+        }
+    }   
 }
