@@ -1,4 +1,6 @@
-import entre_manoir from "entre_manoir.js";
+import entre_manoir from "./entre_manoir.js";
+import menu from "./menu.js";
+import manoir from "./manoir.js";
 
 
 
