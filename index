@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Candy Tale</title>
+    <link rel="preload" as="font" href="assets/GrapeNuts-Regular.ttf" type="font/ttf" crossorigin/>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+    <!-- <script src="player.js"></script> -->
+    <script type="module" src="main.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+
+        @font-face {
+            font-family: Custom;
+            src: url('assets/GrapeNuts-Regular.ttf');
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>
