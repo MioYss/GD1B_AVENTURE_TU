@@ -1,4 +1,6 @@
-class entre_manoir extends Phaser.Scene {
+import Player from "./player.js";
+
+export default class entre_manoir extends Phaser.Scene {
     constructor() {
         
         super("entre_manoir");
@@ -73,16 +75,9 @@ class entre_manoir extends Phaser.Scene {
             "background_principal_01",
             tileset
         );
-
+        
         //CREATION JOUEUR ET PROPRIETES
-        this.player = this.physics.add.sprite(this.positionX, this.positionY, 'perso');
-
-        this.player.setBounce(0.2);
-        this.player.setScale(0.7);
-        this.player.body.setSize(140, 130);
-        this.player.body.setOffset(55, 120);
-        this.player.speed = 500; 
-
+        this.player = new Player(this, 90,960, 'perso');
 
         // ajout du champs de la caméra de taille identique à celle du monde
         this.cameras.main.setBounds(0, 0, 1600, 1600);

@@ -1,3 +1,7 @@
+import entre_manoir from "entre_manoir.js";
+
+
+
 var config = {
     type: Phaser.AUTO,
     width: 1280, height: 720,
