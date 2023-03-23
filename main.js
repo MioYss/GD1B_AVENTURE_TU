@@ -9,7 +9,7 @@ var config = {
         }
     },
 
-    scene: [menu,village_scene,forest_scene,shop_scene]
+    scene: [menu,manoir,entre_manoir]
 };
 var game = new Phaser.Game(config);
 
