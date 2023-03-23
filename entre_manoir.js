@@ -20,7 +20,7 @@ class entre_manoir extends Phaser.Scene {
     // chargement de la carte
     this.load.tilemapTiledJSON("carte", "assets/map.json");
 
-    this.load.spritesheet('perso','assets/perso.png',
+    this.load.spritesheet('perso','assets/perso02.png',
         { frameWidth: 32, frameHeight: 48 });
 
     this.load.image("serpent", "assets/snake01.png"); //Sprite serpent
@@ -73,11 +73,33 @@ class entre_manoir extends Phaser.Scene {
             "background_principal_01",
             tileset
         );
+
+        //CREATION JOUEUR ET PROPRIETES
+        this.player = this.physics.add.sprite(this.positionX, this.positionY, 'perso');
+        this.player.setDepth(1);
+        this.player.setBounce(0.2);
+        this.player.setScale(0.7);
+        this.player.setCollideWorldBounds(true);
+        this.player.body.setSize(140, 130);
+        this.player.body.setOffset(55, 120);
+        this.player.speed = 500; 
+        this.player.hp = this.hpData;
+        this.player.isAttacking = false; 
+        this.player.dir = this.dirData; 
+        this.player.questGiven = this.questGivenData; 
+        this.player.recetteGiven = this.recetteGivenData;
+        this.player.currentAnims = this.animsData; 
+        this.player.inShop = false; 
+
+
+
     }
 
 
 
     update() {
+
+    this.player.update ();
 
     }
 
