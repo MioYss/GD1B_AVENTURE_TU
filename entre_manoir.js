@@ -1,5 +1,6 @@
 import Player from "./player.js";
-
+var plateforme_mobile; 
+var tween_mouvement; 
 export default class entre_manoir extends Phaser.Scene {
     constructor() {
         
@@ -29,7 +30,6 @@ export default class entre_manoir extends Phaser.Scene {
 
 
     }
-
 
 
     create() {
@@ -91,6 +91,28 @@ export default class entre_manoir extends Phaser.Scene {
                 currency: 0,
             });
         }) */ 
+
+        plateforme_mobile = this.physics.add.sprite(
+            700,
+            982,
+            "serpent"
+        ); 
+
+        plateforme_mobile.body.allowGravity = false;
+        plateforme_mobile.body.immovable = true; 
+        
+        tween_mouvement = this.tweens.add({
+            targets: [plateforme_mobile],  // on applique le tween sur platefprme_mobile
+            paused: false, // de base le tween est en pause
+            ease: "Linear",  // concerne la vitesse de mouvement : linéaire ici 
+            duration: 2000,  // durée de l'animation pour monter 
+            yoyo: true,   // mode yoyo : une fois terminé on "rembobine" le déplacement 
+            x: "-=300",   // on va déplacer la plateforme de 300 pixel vers le haut par rapport a sa position
+            delay: 0,     // délai avant le début du tween une fois ce dernier activé
+            hold: 1000,   // délai avant le yoyo : temps qeu al plate-forme reste en haut
+            repeatDelay: 1000, // deléi avant la répétition : temps que la plate-forme reste en bas
+            repeat: -1 // répétition infinie 
+        });
     }
     
 
