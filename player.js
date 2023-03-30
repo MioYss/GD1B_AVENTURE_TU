@@ -14,7 +14,16 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     update() {
 
+        function perdu(){ 
+        "perso".kill();    // supprime le sprite du héros
+        game.input.onTap.addOnce(rejouer, this);      // après un clique de souris, exécute la fonction rejouer
+        }
 
+        function rejouer(){
+            game.state.restart();   // le jeu recommence.
+        }
+        
+        
         if (this.clavier.left.isDown){ //si la touche gauche est appuyée
             this.setVelocityX(-160); //alors vitesse négative en X
         }
