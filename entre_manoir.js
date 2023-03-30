@@ -63,18 +63,17 @@ export default class entre_manoir extends Phaser.Scene {
             "background_02",
             tileset
             );
-    
-        // chargement du calque background_principal_01 (platfromes)
-        const piques = carteDuNiveau.createLayer(
-            "piques",
-            tileset
-        );
-    
+
         // chargement du calque background_principal_01 (platfromes)
         const background_principal_01 = carteDuNiveau.createLayer(
             "background_principal_01",
             tileset
         );
+
+         /* const sortie_layer = carteDuNiveau.createLayer(
+            "sortie_layer",
+            tileset
+        ); */ 
         
         //CREATION JOUEUR ET PROPRIETES
         this.player = new Player(this, 90,960, 'perso');
@@ -86,7 +85,14 @@ export default class entre_manoir extends Phaser.Scene {
         // ancrage de la caméra sur le joueur
         this.cameras.main.startFollow(this.player);
 
+
+        /* this.physics.add.collider(this.player, sortie_layer, () => {
+            this.scene.switch("manoir", {
+                currency: 0,
+            });
+        }) */ 
     }
+    
 
 
 
