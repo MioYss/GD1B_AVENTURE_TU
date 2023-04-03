@@ -3,23 +3,25 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "entree_manoir.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
+        "."
     ],
     "fileStates": {
         "": {
             "scaleInEditor": 0.25
         },
         "entree_manoir.tmx": {
-            "scale": 0.75,
+            "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1170.6666666666665,
-                "y": 2512
+                "x": 1642.4242424242425,
+                "y": 2369.69696969697
             }
         },
         "entree_manoir.tmx#Tile_set": {
-            "scaleInDock": 0.0625
+            "scaleInDock": 0.0625,
+            "scaleInEditor": 0.33
         }
     },
     "last.exportedFilePath": "E:/Zelda/Zelda-02/assets/tile",

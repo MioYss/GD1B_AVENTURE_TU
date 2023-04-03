@@ -106,12 +106,12 @@ export default class entre_manoir extends Phaser.Scene {
             targets: [plateforme_mobile],  // on applique le tween sur platefprme_mobile
             paused: false, // de base le tween est en pause
             ease: "Linear",  // concerne la vitesse de mouvement : linéaire ici 
-            duration: 2000,  // durée de l'animation pour monter 
+            duration: 2000,  // durée de l'animation pour trajet
             yoyo: true,   // mode yoyo : une fois terminé on "rembobine" le déplacement 
             x: "-=300",   // on va déplacer la plateforme de 300 pixel vers le haut par rapport a sa position
             delay: 0,     // délai avant le début du tween une fois ce dernier activé
-            hold: 1000,   // délai avant le yoyo : temps qeu al plate-forme reste en haut
-            repeatDelay: 1000, // deléi avant la répétition : temps que la plate-forme reste en bas
+            hold: 1000,   // délai avant le yoyo
+            repeatDelay: 1000, // delay 
             repeat: -1 // répétition infinie 
         });
 

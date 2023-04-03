@@ -1,0 +1,40 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "#Tile_set": {
+            "scaleInDock": 0.25
+        },
+        "bibli.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 5800,
+                "y": 3560
+            }
+        },
+        "bibli.tmx#Tile_set": {
+            "scaleInDock": 0.125
+        }
+    },
+    "last.imagePath": "E:/Zelda/Zelda-02/assets/tile",
+    "map.height": 30,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 256,
+    "map.tileWidth": 256,
+    "openFiles": [
+    ],
+    "project": "manoir.tiled-project",
+    "recentFiles": [
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 256,
+        "width": 256
+    }
+}
