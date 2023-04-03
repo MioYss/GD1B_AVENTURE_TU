@@ -41,22 +41,26 @@ export default class entre_manoir extends Phaser.Scene {
 
         console.log(this)
         // chargement de la carte
-        const carteDuNiveau = this.add.tilemap("entree_manoir");
+        const map = this.add.tilemap("entree_manoir");
     
         // chargement du jeu de tuiles
-        const tileset = carteDuNiveau.addTilesetImage(
+        const tileset = map.addTilesetImage(
           "Tile_set", // Nom du tiled dans dossier
           "tile_set01" // Nom du tiled donner plus haut pour le rapel
         );
     
         // chargement du calque background_01
-        const bg01 = carteDuNiveau.createLayer( //'imp" nom donner au calque si besoin de le rapeller dans le code
+        const bg01 = map.createLayer( //'imp" nom donner au calque si besoin de le rapeller dans le code
             "bg01", // Nom du calque tiled
             tileset
         ); 
     
+        const mur = map.createLayer( 
+            "mur", // Nom du calque tiled
+            tileset
+        ); 
             // chargement du calque background_03
-        const sortie_layer = carteDuNiveau.createLayer(
+        const sortie_layer = map.createLayer(
             "sortie_layer",
             tileset
         ); 
@@ -74,6 +78,12 @@ export default class entre_manoir extends Phaser.Scene {
         //Mise en place de la caméra qui suit le joueur
         this.cameras.main.startFollow(this.player);
 
+
+        //COLLIDER JOUEURS AVEC MAP
+        this.physics.add.collider(this.player, mur);
+
+        //Collisions avec tileset
+        mur.setCollisionByExclusion(-1, true);
         sortie_layer.setCollisionByExclusion(-1, true);
         this.physics.add.collider(this.player, sortie_layer, () => {
         
