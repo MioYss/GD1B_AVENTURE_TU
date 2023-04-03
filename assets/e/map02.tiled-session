@@ -3,8 +3,9 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "map02.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "fileStates": {
         "": {
@@ -46,10 +47,14 @@
     "map.lastUsedExportFilter": "Tous les Fichiers (*)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
+        "map02.tmx",
+        "map03.tmx"
     ],
     "project": "map02.tiled-project",
     "property.type": "bool",
     "recentFiles": [
+        "map03.tmx",
+        "map02.tmx"
     ],
     "tileset.embedInMap": true
 }

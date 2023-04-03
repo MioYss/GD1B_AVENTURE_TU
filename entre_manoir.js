@@ -2,7 +2,7 @@ import Player from "./player.js";
 let plateforme_mobile; 
 let tween_mouvement; 
 let serpent;
-let sortie_layer01;
+let sortie_layer;
 let setCollisionByExclusion = false
 export default class entre_manoir extends Phaser.Scene {
     constructor() {
@@ -21,10 +21,10 @@ export default class entre_manoir extends Phaser.Scene {
     preload() {
 
     // chargement tuiles de jeu
-    this.load.image("tuiles_jeu02", "assets/e/tuiles_jeu.png");
+    this.load.image("tile_set01", "assets/tile/Tile_set.png");
 
     // chargement de la carte
-    this.load.tilemapTiledJSON("map02", "assets/e/map02.json");
+    this.load.tilemapTiledJSON("entree_manoir", "assets/tile/entree_manoir.json");
 
     this.load.spritesheet('perso','assets/perso02.png',
         { frameWidth: 32, frameHeight: 48 });
@@ -41,23 +41,23 @@ export default class entre_manoir extends Phaser.Scene {
 
         console.log(this)
         // chargement de la carte
-        const carteDuNiveau = this.add.tilemap("map02");
+        const carteDuNiveau = this.add.tilemap("entree_manoir");
     
         // chargement du jeu de tuiles
         const tileset = carteDuNiveau.addTilesetImage(
-          "tuiles_jeu", // Nom du tiled dans dossier
-          "tuiles_jeu02" // Nom du tiled donner plus haut pour le rapel
+          "Tile_set", // Nom du tiled dans dossier
+          "tile_set01" // Nom du tiled donner plus haut pour le rapel
         );
     
         // chargement du calque background_01
-        const imp = carteDuNiveau.createLayer( //'imp" nom donner au calque si besoin de le rapeller dans le code
-            "imp", // Nom du calque tiled
+        const bg01 = carteDuNiveau.createLayer( //'imp" nom donner au calque si besoin de le rapeller dans le code
+            "bg01", // Nom du calque tiled
             tileset
         ); 
     
             // chargement du calque background_03
-        const sortie_layer01 = carteDuNiveau.createLayer(
-            "sortie_layer01",
+        const sortie_layer = carteDuNiveau.createLayer(
+            "sortie_layer",
             tileset
         ); 
     
@@ -65,17 +65,17 @@ export default class entre_manoir extends Phaser.Scene {
 
         
         //CREATION JOUEUR ET PROPRIETES
-        this.player = new Player(this, 90,960, 'perso');
+        this.player = new Player(this, 1000,3000, 'perso');
 
-        // ajout du champs de la caméra de taille identique à celle du monde
-        this.cameras.main.setBounds(0, 0, 1600, 1600);
-        //this.cameras.main.zoom = 1.5;
-    
-        // ancrage de la caméra sur le joueur
+        //Initialisation de la caméra et des limites de jeu
+        this.cameras.main.setBounds(0, 0, 2048, 3584);
+        this.cameras.main.zoom = 0.7;
+        this.physics.world.setBounds(0, 0, 2048, 3584);
+        //Mise en place de la caméra qui suit le joueur
         this.cameras.main.startFollow(this.player);
 
-        sortie_layer01.setCollisionByExclusion(-1, true);
-        this.physics.add.collider(this.player, sortie_layer01, () => {
+        sortie_layer.setCollisionByExclusion(-1, true);
+        this.physics.add.collider(this.player, sortie_layer, () => {
         
             console.log ("test")
             this.scene.switch("manoir", {

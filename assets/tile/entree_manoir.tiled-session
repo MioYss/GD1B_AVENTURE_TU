@@ -1,0 +1,46 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "entree_manoir.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInEditor": 0.25
+        },
+        "entree_manoir.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 1170.6666666666665,
+                "y": 2512
+            }
+        },
+        "entree_manoir.tmx#Tile_set": {
+            "scaleInDock": 0.0625
+        }
+    },
+    "last.exportedFilePath": "E:/Zelda/Zelda-02/assets/tile",
+    "last.imagePath": "E:/Zelda/Zelda-02/assets/tile",
+    "map.height": 14,
+    "map.lastUsedExportFilter": "Fichiers de carte JSON (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 256,
+    "map.tileWidth": 256,
+    "map.width": 8,
+    "openFiles": [
+        "entree_manoir.tmx"
+    ],
+    "project": "entree_manoir.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "entree_manoir.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 256,
+        "width": 256
+    }
+}
