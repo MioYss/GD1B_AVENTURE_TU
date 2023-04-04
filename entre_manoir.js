@@ -1,4 +1,5 @@
 import Player from "./player.js";
+
 let plateforme_mobile; 
 let tween_mouvement; 
 let serpent;
