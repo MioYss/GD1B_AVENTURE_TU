@@ -1,6 +1,6 @@
 var boutonFeu;  
 
-export default class tir extends Phaser.Physics.Arcade.Sprite {
+export default class Tir extends Phaser.Physics.Arcade.Sprite {
 
     constructor(scene, x, y, texture,player) {
         super(scene, x, y, texture); 
@@ -25,7 +25,7 @@ export default class tir extends Phaser.Physics.Arcade.Sprite {
         this.player.direction = 'right';  
 
         // affectation de la touche A à boutonFeu
-        this.boutonFeu = this.Input.Keyboard.addKey('A'); 
+        this.keyA = this.input.clavier.addKey(Phaser.Input.clavier.KeyCodes.A);
 
     }
     
@@ -50,17 +50,20 @@ export default class tir extends Phaser.Physics.Arcade.Sprite {
         //fonction tirer( ), prenant comme paramètre l'auteur du tir
         function tirer(player) {
             // mesasge d'alerte affichant les attributs de player
-            alert ("joueur en position"+player.x + ","+player.y + ", direction du tir: "
+            alert ("joueur en position"+ player.x + ","+ player.y + ", direction du tir: "
             + player.direction) ; 
+
         }  
 
-
+           
+        if (this.clavier.JustDown(keyA)) {
+            console.log ("test");
         }
 
-        // déclenchement de la fonction tirer() si appui sur boutonFeu 
-        if (Phaser.Input.Keyboard.JustDown(boutonFeu)) {
+        if (this.clavier.JustDown(keyA)) {
             tirer(player);
-        }  
-
+        }
     
-};
+    };
+
+}

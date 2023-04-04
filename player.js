@@ -1,4 +1,4 @@
-import tir from '/tir.js';
+import Tir from './tir.js';
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
     
