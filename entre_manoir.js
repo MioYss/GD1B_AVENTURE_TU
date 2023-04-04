@@ -72,10 +72,10 @@ export default class entre_manoir extends Phaser.Scene {
 
         
         //CREATION JOUEUR ET PROPRIETES
-        this.player = new Player(this, 1000,3000, 'perso');
+        this.player = new Player(this, 1000,3200, 'perso');
 
         //CREATION BATON
-        this.baton01 = this.physics.add.sprite(1000, 2700, 'baton01');
+        this.baton01 = this.physics.add.sprite(1000, 2900, 'baton01');
 
         //Initialisation de la caméra et des limites de jeu
         this.cameras.main.setBounds(0, 0, 2048, 3584);
