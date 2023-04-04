@@ -14,7 +14,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         
         const has_baton01 = false
 
-        this.direction = 'right';  
+        this.direction = 'left';  
 
     }
 
@@ -22,7 +22,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     attaque(scene,sprite) {    
 
         this.tir = new Tir (scene, this.x, this.y, sprite);
-        this.tir.tirer(this.x , this.y , this.direction);
+        this.tir.tirer(this.direction);
         
     }
 
@@ -60,6 +60,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         if (this.keyboard.left.isDown){ //si la touche gauche est appuyée
             this.setVelocityX(-160); //alors vitesse négative en X
             this.direction = "left"
+            
         }
     
         else if (this.keyboard.right.isDown){ //sinon si la touche droite est appuyée
@@ -79,7 +80,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         else {
             this.setVelocityX(0) & this.setVelocityY (0)
         }
-
+        console.log (this.direction)
     }
         
 
