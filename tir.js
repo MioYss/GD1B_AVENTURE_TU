@@ -47,4 +47,5 @@ export default class Tir extends Phaser.Physics.Arcade.Sprite {
 
         } 
 
+
 }

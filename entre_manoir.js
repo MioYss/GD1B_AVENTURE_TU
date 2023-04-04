@@ -136,6 +136,10 @@ export default class entre_manoir extends Phaser.Scene {
         //CREATION tir
         this.sprite_tir = this.physics.add.sprite('sprite_tir');
 
+        this.physics.add.collider(this.sprite_tir, plateforme_mobile, () => {
+            console.log ("test tir");
+        });
+
 
     }
     
