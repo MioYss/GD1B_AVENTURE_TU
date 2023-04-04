@@ -1,4 +1,3 @@
-const DEBUG = true
 
 const PLAYER_SPEED = 200
 

@@ -1,4 +1,4 @@
-import Tir from './tir.js';
+import Tir from "./tir.js";
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
     
@@ -12,20 +12,30 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.setCollideWorldBounds(true);
 
 
+
     }
 
+    attaque(scene) {    
+        
+        const keyA = this.input.clavier.addKey(Phaser.Input.clavier.KeyCodesA);
+
+        if (Phaser.Input.clavier.JustDown(keyA)) {
+
+            this.tir = new Tir (scene, this.x, this.y, sprite_tir);
+            this.tir.tirer(this);
+        }
+    }
+
+    perdu(){ 
+    this.kill();    // supprime le sprite du héros
+    game.input.onTap.addOnce(rejouer, this);      // après un clique de souris, exécute la fonction rejouer
+    }
+
+    rejouer(){
+        game.state.restart();   // le jeu recommence.
+    }
+    
     update() {
-
-        function perdu(){ 
-        "perso".kill();    // supprime le sprite du héros
-        game.input.onTap.addOnce(rejouer, this);      // après un clique de souris, exécute la fonction rejouer
-        }
-
-        function rejouer(){
-            game.state.restart();   // le jeu recommence.
-        }
-        
-        
         if (this.clavier.left.isDown){ //si la touche gauche est appuyée
             this.setVelocityX(-160); //alors vitesse négative en X
         }
@@ -44,5 +54,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         else {
             this.setVelocityX(0) & this.setVelocityY (0)
         }
-    }   
+    }
+        
 }

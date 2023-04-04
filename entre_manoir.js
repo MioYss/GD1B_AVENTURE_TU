@@ -33,7 +33,9 @@ export default class entre_manoir extends Phaser.Scene {
 
     this.load.image("serpent", "assets/snake01.png"); //Sprite serpent
 
-    this.load.image("baton01", "assets/baton01.png"); //Sprite serpent
+    this.load.image("baton01", "assets/baton01.png"); //Sprite baton
+
+    this.load.image("sprite_tir", "assets/projectile.png"); //Sprite baton
 
 
     }
