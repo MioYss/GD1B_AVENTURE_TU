@@ -1,4 +1,4 @@
-var boutonFeu;  
+    var boutonFeu;  
 
 export default class Tir extends Phaser.Physics.Arcade.Sprite {
 
