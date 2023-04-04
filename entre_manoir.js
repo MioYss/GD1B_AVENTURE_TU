@@ -26,10 +26,13 @@ export default class entre_manoir extends Phaser.Scene {
     // chargement de la carte
     this.load.tilemapTiledJSON("entree_manoir", "assets/tile/entree_manoir.json");
 
-    this.load.spritesheet('perso','assets/perso02.png',
-        { frameWidth: 32, frameHeight: 48 });
+    this.load.spritesheet('perso','assets/perso03.png',
+        { frameWidth: 256, frameHeight: 256 })
+        ;
 
     this.load.image("serpent", "assets/snake01.png"); //Sprite serpent
+
+    this.load.image("baton01", "assets/baton01.png"); //Sprite serpent
 
 
     }
@@ -71,6 +74,9 @@ export default class entre_manoir extends Phaser.Scene {
         //CREATION JOUEUR ET PROPRIETES
         this.player = new Player(this, 1000,3000, 'perso');
 
+        //CREATION BATON
+        this.baton01 = this.physics.add.sprite(1000, 2700, 'baton01');
+
         //Initialisation de la caméra et des limites de jeu
         this.cameras.main.setBounds(0, 0, 2048, 3584);
         this.cameras.main.zoom = 0.7;
@@ -94,8 +100,8 @@ export default class entre_manoir extends Phaser.Scene {
         })
 
         plateforme_mobile = this.physics.add.sprite(
-            460,
-            650,
+            1000,
+            2600,
             "serpent"
         ); 
 

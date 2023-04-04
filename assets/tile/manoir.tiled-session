@@ -3,8 +3,9 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "bibli.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "fileStates": {
         "#Tile_set": {
@@ -14,8 +15,8 @@
             "scale": 0.125,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 5800,
-                "y": 3560
+                "x": 5792,
+                "y": 3552
             }
         },
         "bibli.tmx#Tile_set": {
@@ -28,9 +29,11 @@
     "map.tileHeight": 256,
     "map.tileWidth": 256,
     "openFiles": [
+        "bibli.tmx"
     ],
     "project": "manoir.tiled-project",
     "recentFiles": [
+        "bibli.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.tileSize": {
