@@ -4,7 +4,11 @@ let plateforme_mobile;
 let tween_mouvement; 
 let serpent;
 let sortie_layer;
-let setCollisionByExclusion = false
+let setCollisionByExclusion = false;
+
+var keyE;
+var keyA;
+
 export default class entre_manoir extends Phaser.Scene {
     constructor() {
         
@@ -35,7 +39,7 @@ export default class entre_manoir extends Phaser.Scene {
 
     this.load.image("baton01", "assets/baton01.png"); //Sprite baton
 
-    this.load.image("sprite_tir", "assets/projectile.png"); //Sprite baton
+    this.load.image("sprite_tir", "assets/projectile.png"); //Sprite tir
 
 
     }
@@ -43,7 +47,8 @@ export default class entre_manoir extends Phaser.Scene {
 
     create() {
 
-        this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
 
         console.log(this)
         // chargement de la carte
@@ -125,8 +130,15 @@ export default class entre_manoir extends Phaser.Scene {
         });
 
         this.physics.add.collider(this.player, plateforme_mobile, () => {
-            console.log ("test")
+            console.log ("test");
         });
+
+        //CREATION tir
+        this.sprite_tir = this.physics.add.sprite('sprite_tir');
+
+        // création d'un groupe d'éléments vide
+        this.groupeBullets = this.physics.add.group();  
+
     }
     
 
@@ -134,8 +146,18 @@ export default class entre_manoir extends Phaser.Scene {
 
     update() {
 
-    this.player.update ();
+    this.player.deplacement ();
 
+    if (keyE.isDown) {
+
+        console.log ("test E");
+    }
+
+    if (keyA.isDown) {
+
+        console.log ("test A");
+        this.player.attaque(this, this.sprite_tir);
+    }
 
 
     }

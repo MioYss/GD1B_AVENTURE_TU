@@ -65,7 +65,7 @@ export default class manoir extends Phaser.Scene {
 
     update() {
 
-        this.player.update ();
+        this.player.deplacement ();
         
         
     }
