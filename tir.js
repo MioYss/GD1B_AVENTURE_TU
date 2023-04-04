@@ -1,4 +1,4 @@
-var groupeBullets;
+var groupe_bullets;
 
 export default class Tir extends Phaser.Physics.Arcade.Sprite {
 
@@ -10,7 +10,8 @@ export default class Tir extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this);
         this.setCollideWorldBounds(true);
 
-
+        // création d'un groupe d'éléments vide
+        this.groupe_bullets = scene.physics.add.group();  
         
 
     }
@@ -27,7 +28,7 @@ export default class Tir extends Phaser.Physics.Arcade.Sprite {
             if (direction == 'left') { coefDir = -1; } else { coefDir = 1 }
 
             // on crée la balle a coté du joueur
-            var sprite_tir = groupeBullets.create(this.x + (25 * coefDir), this.y - 4, 'sprite_tir');
+            var sprite_tir = this.groupe_bullets.create(this.x + (25 * coefDir), this.y - 4, 'sprite_tir');
 
             // parametres physiques de la balle.
             

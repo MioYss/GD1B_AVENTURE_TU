@@ -136,8 +136,6 @@ export default class entre_manoir extends Phaser.Scene {
         //CREATION tir
         this.sprite_tir = this.physics.add.sprite('sprite_tir');
 
-        // création d'un groupe d'éléments vide
-        this.groupeBullets = this.physics.add.group();  
 
     }
     
