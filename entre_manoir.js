@@ -133,8 +133,9 @@ export default class entre_manoir extends Phaser.Scene {
             console.log ("test");
         });
 
+        
         //CREATION tir // TROUVER PB DE COLISION AVEC LE TIR
-        this.sprite_tir = this.physics.add.sprite('sprite_tir');
+        this.groupe_bullets = this.physics.add.sprite('sprite_tir');
 
         this.physics.add.collider(this.groupe_bullets, plateforme_mobile, () => {
             console.log ("test tir");
