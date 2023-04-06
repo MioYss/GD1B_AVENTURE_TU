@@ -23,18 +23,7 @@ export default class menu extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(this.cursors.space)){
             this.scene.start("entre_manoir", {
                 x : 1200, 
-                y : 1300, 
-                currency: 0,
-                hp: 3, 
-                dir: "down", 
-                baton: false,
-                edelweiss: false,
-                hache: false,
-                bonbons: false,
-                gelee: false,
-                quest: false, 
-                recette: false, 
-                anims : ["run_left","run_up","run_right","run_down","idle_left","idle_up","idle_right","idle_down"],
+                y : 1300,     
             });
         }
     }
