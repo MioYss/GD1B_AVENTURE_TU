@@ -56,7 +56,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                     baton01.destroy(); 
                     player.has_baton01 = true;    
                     // UI Baton
-                    player.scene.ui_baton = player.scene.add.image(-300, 680, "baton").setOrigin(0,0).setScale(0.8);
+                    player.scene.ui_baton = player.scene.add.image( 1360, -180, "baton").setOrigin(0,0).setScale(0.8);
                     player.scene.ui_baton.setScrollFactor(0);
                     player.scene.ui_baton.setDepth(10);
             
