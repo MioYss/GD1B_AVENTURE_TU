@@ -22,7 +22,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         this.hp = 3; 
         this.invulnerable = false; 
-        this.dureeInvulnerable = 1000; 
+        this.dureeInvulnerable = 1000;
+
 
     }
 
@@ -107,6 +108,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             player.invulnerable = true;
 
             player.hp -= 1;
+
             if(player.hp <= 0) {
                 player.scene.scene.start("entre_manoir");
             }
@@ -124,6 +126,38 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             
         }
     }
+
+  /*  barre_hp(){
+
+        if (player.hp == 3) {
+
+            player.scene.anims.create({
+                key: 'hp3',
+                frames:[{key: 'ui_pv', frame: 0}],
+                frameRate: 10
+            });
+
+        }
+
+        if (player.hp == 2) {
+            player.scene.anims.create({
+                key: 'hp2',
+                frames:[{key: 'ui_pv', frame: 1}],
+                frameRate: 10
+            });
+            
+        }
+
+        if (player.hp == 1) {
+            player.scene.anims.create({
+                key: 'hp1',
+                frames:[{key: 'ui_pv', frame: 2}],
+                frameRate: 10
+            });
+
+        }
+
+    }*/
 
     soigne(player, soin){
 

@@ -41,6 +41,9 @@ export default class entre_manoir extends Phaser.Scene {
 
     this.load.image("sprite_tir", "assets/projectile.png"); //Sprite tir
 
+    this.load.image('hp3', 'assets/UI/ui_pv03.png',) // Hp3
+    this.load.image('hp2', 'assets/UI/ui_pv02.png',) // Hp2
+    this.load.image('hp1', 'assets/UI/ui_pv01.png',) // Hp1
 
     }
 
@@ -162,6 +165,11 @@ export default class entre_manoir extends Phaser.Scene {
 
         this.physics.add.overlap(this.player, this.groupe_soins , this.player.soigne);
 
+        // Placement UI
+        this.ui_hp = this.add.image(-290, -130, "hp3").setOrigin(0,0).setScale(1.4);
+        this.ui_hp.setScrollFactor(0);
+        this.ui_hp.setDepth(10);
+
     }
 
 
@@ -185,7 +193,17 @@ export default class entre_manoir extends Phaser.Scene {
         this.player.attaque(this, this.sprite_tir);
     }
 
+    //HP player
+    if(this.player.hp == 3){
+        this.ui_hp.setTexture("hp3");
+    }
+    if(this.player.hp == 2){
+        this.ui_hp.setTexture("hp2");
+    }
+    if(this.player.hp == 1){
+        this.ui_hp.setTexture("hp1");
 
     }
+}
 
 };
