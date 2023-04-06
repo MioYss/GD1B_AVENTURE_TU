@@ -105,44 +105,65 @@ export default class entre_manoir extends Phaser.Scene {
             this.scene.switch("manoir", {
                 currency: 0,
             });
-        })
-
-        plateforme_mobile = this.physics.add.sprite(
-            1000,
-            2600,
-            "serpent"
-        ); 
-
-        plateforme_mobile.body.allowGravity = false;
-        plateforme_mobile.body.immovable = true; 
-        
-        tween_mouvement = this.tweens.add({
-            targets: [plateforme_mobile],  // on applique le tween sur platefprme_mobile
-            paused: false, // de base le tween est en pause
-            ease: "Linear",  // concerne la vitesse de mouvement : linéaire ici 
-            duration: 2000,  // durée de l'animation pour trajet
-            yoyo: true,   // mode yoyo : une fois terminé on "rembobine" le déplacement 
-            x: "-=300",   // on va déplacer la plateforme de 300 pixel vers le haut par rapport a sa position
-            delay: 0,     // délai avant le début du tween une fois ce dernier activé
-            hold: 1000,   // délai avant le yoyo
-            repeatDelay: 1000, // delay 
-            repeat: -1 // répétition infinie 
         });
 
-        this.physics.add.collider(this.player, plateforme_mobile, () => {
-            console.log ("test");
-        });
 
-        
         //CREATION tir // TROUVER PB DE COLISION AVEC LE TIR
-        this.groupe_bullets = this.physics.add.sprite('sprite_tir');
+        this.groupe_bullets = this.physics.add.group();
 
-        this.physics.add.collider(this.groupe_bullets, plateforme_mobile, () => {
-            console.log ("test tir");
+        this.groupe_ennemis = this.physics.add.group();
+
+        this.groupe_soins = this.physics.add.group();
+
+        //Creation des ennemis à partir du layer objet dans Tiled
+        map.getObjectLayer('ennemis').objects.forEach((objet) => {
+
+            this.groupe_ennemis.create(objet.x, objet.y, 'serpent'); 
+
         });
 
+
+
+
+        this.groupe_ennemis.children.each(function(child) {
+            
+            child.setScale(8);
+
+            child.body.allowGravity = false;
+            child.body.immovable = true; 
+
+            child.hp = 3; 
+        
+            tween_mouvement = this.tweens.add({
+                targets: [child],  // on applique le tween sur platefprme_mobile
+                paused: false, // de base le tween est en pause
+                ease: "Linear",  // concerne la vitesse de mouvement : linéaire ici 
+                duration: 2000,  // durée de l'animation pour trajet
+                yoyo: true,   // mode yoyo : une fois terminé on "rembobine" le déplacement 
+                x: "-=300",   // on va déplacer la plateforme de 300 pixel vers le haut par rapport a sa position
+                delay: 0,     // délai avant le début du tween une fois ce dernier activé
+                hold: 1000,   // délai avant le yoyo
+                repeatDelay: 1000, // delay 
+                repeat: -1 // répétition infinie 
+            });
+
+          }, this);
+
+
+
+        this.physics.add.collider(this.player, this.groupe_ennemis, this.player.recoitDegats);
+
+ 
+        this.physics.add.collider(this.groupe_ennemis, this.groupe_bullets, this.player.infligeDegats);
+
+        this.physics.add.overlap(this.player, this.baton01 , this.player.obtain_baton);
+
+        this.physics.add.overlap(this.player, this.groupe_soins , this.player.soigne);
 
     }
+
+
+    
     
 
 

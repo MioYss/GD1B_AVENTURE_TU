@@ -6,36 +6,49 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, texture) {
         super(scene, x, y, texture); 
         this.keyboard = scene.input.keyboard.createCursorKeys(); // up, down, right, left, space, shift
-
+        this.keyE = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 
         scene.physics.world.enable(this)
         scene.add.existing(this)
         this.setCollideWorldBounds(true);
         
-        const has_baton01 = false
+        this.has_baton01 = false; 
 
         this.direction = 'left';  
+
+
+        this.timeFromLastShot = 0; 
+        this.fireCooldown = 600; 
+
+        this.hp = 3; 
+        this.invulnerable = false; 
+        this.dureeInvulnerable = 1000; 
 
     }
 
 
-    attaque(scene,sprite) {    
+    attaque(scene,sprite) {   
 
-        this.tir = new Tir (scene, this.x, this.y, sprite);
-        this.tir.tirer(this.direction);
-        
+        if(new Date().getTime() - this.timeFromLastShot < this.fireCooldown){
+             return; 
+        } 
+
+        if(this.has_baton01 == true){
+            this.tir = new Tir (scene, this.x, this.y, sprite);
+            this.tir.tirer(this.direction);
+            this.timeFromLastShot = new Date().getTime();
+        } 
     }
 
 
     obtain_baton(player,baton01){
-        if(player.has_baton01 == false){
-            this.baton01.setVisible(true); 
 
-        const isEJustDown = Phaser.Input.keyboard.JustDown(this.keyE);
-                if(isEJustDown){
-                    
-                    this.baton01.y += 2; 
-                    this.baton01.setVisible(true); 
+        if(player.has_baton01 == false){
+            console.log("je suis sur baton"); 
+        
+                if(player.keyE.isDown){
+
+                    baton01.destroy(); 
                     //this.discussion(["Vous avez trouvé un baton magique"]);
                     player.has_baton01 = true; 
                     //this.ui_hache.setVisible(true); 
@@ -82,7 +95,51 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         }
         console.log (this.direction)
     }
-        
 
+    
+    infligeDegats(ennemi, bullet){
+
+        bullet.destroy();
+
+        ennemi.hp -= 1; 
+        if(ennemi.hp <= 0){
+
+            ennemi.scene.groupe_soins.create(ennemi.x, ennemi.y, 'serpent');
+
+            ennemi.destroy(); 
+        }
+    }
+
+    recoitDegats(player, ennemi){
+
+        if(player.invulnerable == false){
+            player.invulnerable = true;
+
+            player.hp -= 1;
+            if(player.hp <= 0) {
+                player.scene.scene.start("entre_manoir");
+            }
+
+
+            player.setTint(0xff0000);
+            player.scene.cameras.main.shake(200, 0.01);
+            console.log(player.hp); 
+
+            setTimeout(() => {
+                player.invulnerable = false;
+                player.setTint(0xffffff);
+    
+            }, player.dureeInvulnerable);
+            
+        }
+    }
+
+    soigne(player, soin){
+
+        player.hp += 1;
+        console.log(player.hp);
+
+        soin.destroy(); 
+    }
 
 }
