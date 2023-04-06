@@ -88,7 +88,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     
-    infligeDegats(ennemi, bullet){
+    inflige_degats(ennemi, bullet){
 
         bullet.destroy();
 
@@ -101,7 +101,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    recoitDegats(player, ennemi){
+    recoit_degats(player, ennemi){
 
         if(player.invulnerable == false){
             player.invulnerable = true;
