@@ -153,8 +153,9 @@ export default class entre_manoir extends Phaser.Scene {
         // Collider / Overlap
         this.physics.add.collider(this.player, this.groupe_ennemis, this.player.recoitDegats);
 
- 
         this.physics.add.collider(this.groupe_ennemis, this.groupe_bullets, this.player.infligeDegats);
+
+        this.physics.add.collider(mur, this.groupe_bullets, this.player.annihilation); // destrction tir quand touche mur
 
         this.physics.add.overlap(this.player, this.baton01 , this.player.obtain_baton);
 

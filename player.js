@@ -27,6 +27,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
 
+
+    // ###FONCTION###
+    
     attaque(scene,sprite) {   
 
         //timer cree par phaser - valaeur donner et on regarde la différence
@@ -128,6 +131,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         console.log(player.hp);
 
         soin.destroy(); 
+    }
+
+    annihilation(mur, bullet){
+
+        // destruction tir quand touche mur
+        mur.destroy();
+
     }
 
 }
