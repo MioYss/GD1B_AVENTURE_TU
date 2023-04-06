@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="8" height="14" tilewidth="256" tileheight="256" infinite="0" nextlayerid="4" nextobjectid="1">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="8" height="14" tilewidth="256" tileheight="256" infinite="0" nextlayerid="5" nextobjectid="4">
+ <editorsettings>
+  <export target="../map.json" format="json"/>
+ </editorsettings>
  <tileset firstgid="1" name="Tile_set" tilewidth="256" tileheight="256" tilecount="400" columns="20">
   <image source="Tile_set.png" width="5120" height="5120"/>
   <tile id="180">
@@ -131,6 +134,17 @@
 0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="4" name="ennemis">
+  <object id="1" x="342.208" y="2716.8">
+   <point/>
+  </object>
+  <object id="2" x="1602.53" y="2716.8">
+   <point/>
+  </object>
+  <object id="3" x="1005.76" y="2904.59">
+   <point/>
+  </object>
+ </objectgroup>
  <layer id="3" name="mur" width="8" height="14">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,
