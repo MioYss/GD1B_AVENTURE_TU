@@ -6,7 +6,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, texture) {
         super(scene, x, y, texture); 
         this.keyboard = scene.input.keyboard.createCursorKeys(); // up, down, right, left, space, shift
-        this.keyE = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        this.keyE = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E); // ajout E
 
         scene.physics.world.enable(this)
         scene.add.existing(this)
@@ -29,6 +29,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     attaque(scene,sprite) {   
 
+        //timer cree par phaser - valaeur donner et on regarde la différence
         if(new Date().getTime() - this.timeFromLastShot < this.fireCooldown){
              return; 
         } 
@@ -36,7 +37,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         if(this.has_baton01 == true){
             this.tir = new Tir (scene, this.x, this.y, sprite);
             this.tir.tirer(this.direction);
-            this.timeFromLastShot = new Date().getTime();
+            this.timeFromLastShot = new Date().getTime(); // on donne une nouvelle valauer a timefrom, on l'actualise pour avoir un delai
         } 
     }
 
@@ -49,25 +50,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                 if(player.keyE.isDown){
 
                     baton01.destroy(); 
-                    //this.discussion(["Vous avez trouvé un baton magique"]);
                     player.has_baton01 = true; 
-                    //this.ui_hache.setVisible(true); 
-                    //this.ui_baton.setVisible(false); 
-                    //this.player.hasBaton = false
-                    //this.player.currentAnims = ["run_left_axe","run_up_axe","run_right_axe","run_down_axe","idle_left_axe","idle_up_axe","idle_right_axe","idle_down_axe"];
                 }
         }
         
     }
 
-    /*perdu(){ 
-    this.kill();    // supprime le sprite du héros
-    game.input.onTap.addOnce(rejouer, this);      // après un clique de souris, exécute la fonction rejouer
-    }*/
-
-    /*rejouer(){
-        game.state.restart();   // le jeu recommence.
-    }*/
     
     deplacement() {
         if (this.keyboard.left.isDown){ //si la touche gauche est appuyée
@@ -104,7 +92,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         ennemi.hp -= 1; 
         if(ennemi.hp <= 0){
 
-            ennemi.scene.groupe_soins.create(ennemi.x, ennemi.y, 'serpent');
+            ennemi.scene.groupe_soins.create(ennemi.x, ennemi.y, 'serpent'); // drop de soin
 
             ennemi.destroy(); 
         }
@@ -121,13 +109,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             }
 
 
-            player.setTint(0xff0000);
-            player.scene.cameras.main.shake(200, 0.01);
+            player.setTint(0xff0000);  // met le player rouge
+            player.scene.cameras.main.shake(200, 0.01); // shake de cam
             console.log(player.hp); 
 
             setTimeout(() => {
                 player.invulnerable = false;
-                player.setTint(0xffffff);
+                player.setTint(0xffffff); // met le player normal
     
             }, player.dureeInvulnerable);
             

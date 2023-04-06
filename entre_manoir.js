@@ -108,7 +108,7 @@ export default class entre_manoir extends Phaser.Scene {
         });
 
 
-        //CREATION tir // TROUVER PB DE COLISION AVEC LE TIR
+        //Creation tir 
         this.groupe_bullets = this.physics.add.group();
 
         this.groupe_ennemis = this.physics.add.group();
@@ -124,7 +124,7 @@ export default class entre_manoir extends Phaser.Scene {
 
 
 
-
+        // pour chaque enfant ennemi du calque
         this.groupe_ennemis.children.each(function(child) {
             
             child.setScale(8);
@@ -150,7 +150,7 @@ export default class entre_manoir extends Phaser.Scene {
           }, this);
 
 
-
+        // Collider / Overlap
         this.physics.add.collider(this.player, this.groupe_ennemis, this.player.recoitDegats);
 
  
