@@ -93,7 +93,7 @@ export default class entre_manoir extends Phaser.Scene {
 
         //Initialisation de la caméra et des limites de jeu
         this.cameras.main.setBounds(0, 0, 2048, 3584);
-        this.cameras.main.zoom = 0.7;
+        this.cameras.main.zoom = 0.65;
         this.physics.world.setBounds(0, 0, 2048, 3584);
         //Mise en place de la caméra qui suit le joueur
         this.cameras.main.startFollow(this.player);
