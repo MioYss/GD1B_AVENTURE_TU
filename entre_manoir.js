@@ -182,30 +182,30 @@ export default class entre_manoir extends Phaser.Scene {
 
     update() {
 
-    this.player.deplacement ();
+        this.player.deplacement ();
 
-    if (keyE.isDown) {
+        if (keyE.isDown) {
 
-        console.log ("test E");
+            console.log ("test E");
+        }
+
+        if (keyA.isDown) {
+
+            console.log ("test A");
+            this.player.attaque(this, this.sprite_tir);
+        }
+
+        //HP player UI
+        if(this.player.hp == 3){
+            this.ui_hp.setTexture("hp3");
+        }
+        if(this.player.hp == 2){
+            this.ui_hp.setTexture("hp2");
+        }
+        if(this.player.hp == 1){
+            this.ui_hp.setTexture("hp1");
+
+        }
     }
-
-    if (keyA.isDown) {
-
-        console.log ("test A");
-        this.player.attaque(this, this.sprite_tir);
-    }
-
-    //HP player UI
-    if(this.player.hp == 3){
-        this.ui_hp.setTexture("hp3");
-    }
-    if(this.player.hp == 2){
-        this.ui_hp.setTexture("hp2");
-    }
-    if(this.player.hp == 1){
-        this.ui_hp.setTexture("hp1");
-
-    }
-}
 
 };

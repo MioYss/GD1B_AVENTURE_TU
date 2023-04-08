@@ -1,9 +1,16 @@
 import Player from "./player.js";
 
+
+var keyE;
+var keyA;
+
+
 export default class manoir extends Phaser.Scene {
     constructor() {
         
         super("manoir");
+
+
     }
 
     //INITIALISATION DES DONNEES EN CHANGEANT DE SCENE
@@ -11,6 +18,7 @@ export default class manoir extends Phaser.Scene {
         this.positionX = data.x;
         this.positionY = data.y;
         this.piece = data.piece;
+        this.has_baton = true
     }
 
 
@@ -22,6 +30,18 @@ export default class manoir extends Phaser.Scene {
 
         // chargement de la carte
         this.load.tilemapTiledJSON("bibli", "assets/tile/bibli.json");
+
+
+
+        this.load.image("baton01", "assets/baton01.png"); //Sprite baton
+
+        this.load.image("sprite_tir", "assets/projectile.png"); //Sprite tir
+    
+        //UI
+        this.load.image('hp3', 'assets/UI/ui_pv03.png',) // Hp3
+        this.load.image('hp2', 'assets/UI/ui_pv02.png',) // Hp2
+        this.load.image('hp1', 'assets/UI/ui_pv01.png',) // Hp1
+        this.load.image('baton', 'assets/UI/baton_ui.png',) // Hp1
     }
 
 
@@ -29,6 +49,7 @@ export default class manoir extends Phaser.Scene {
     create() {
 
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
 
         console.log(this)
 
@@ -84,6 +105,12 @@ export default class manoir extends Phaser.Scene {
         this.physics.world.setBounds(0, 0, 7680, 7680);
         //Mise en place de la caméra qui suit le joueur
         this.cameras.main.startFollow(this.player);
+
+
+        //Creation tir 
+        this.groupe_bullets = this.physics.add.group();
+
+
     }
 
 
@@ -91,8 +118,13 @@ export default class manoir extends Phaser.Scene {
     update() {
 
         this.player.deplacement ();
-        
-        
+
+        if (this.keyA.isDown) {
+
+            console.log ("test A");
+            this.player.attaque(this, this.sprite_tir);
+            console.log ("je tire");
+        }
     }
 
 };
