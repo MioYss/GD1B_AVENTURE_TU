@@ -75,7 +75,7 @@ export default class entre_manoir extends Phaser.Scene {
             "mur", // Nom du calque tiled
             tileset
         ); 
-            // chargement du calque background_03
+            // chargement du changement de zone
         const sortie_layer = map.createLayer(
             "sortie_layer",
             tileset
@@ -104,6 +104,7 @@ export default class entre_manoir extends Phaser.Scene {
 
         //Collisions avec tileset
         mur.setCollisionByExclusion(-1, true);
+
         sortie_layer.setCollisionByExclusion(-1, true);
         this.physics.add.collider(this.player, sortie_layer, () => {
         

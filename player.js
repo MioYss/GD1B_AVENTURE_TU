@@ -71,23 +71,23 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     
     deplacement() {
         if (this.keyboard.left.isDown){ //si la touche gauche est appuyée
-            this.setVelocityX(-180); //alors vitesse négative en X
+            this.setVelocityX(-300); //alors vitesse négative en X
             this.direction = "left"
             
         }
     
         else if (this.keyboard.right.isDown){ //sinon si la touche droite est appuyée
-            this.setVelocityX(180); //alors vitesse positive en X
+            this.setVelocityX(300); //alors vitesse positive en X
             this.direction = "right"
         }
     
         else if (this.keyboard.up.isDown){ // si touche bas appuyée 
-            this.setVelocityY(-180); //vitesse 
+            this.setVelocityY(-300); //vitesse 
             this.direction = "down"
         }
     
         else if (this.keyboard.down.isDown){ //si touche haut appuyée 
-            this.setVelocityY(180); //alors vitesse verticale 
+            this.setVelocityY(300); //alors vitesse verticale 
             this.direction = "up"
         }
         else {

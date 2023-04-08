@@ -17,9 +17,11 @@ export default class manoir extends Phaser.Scene {
 
     preload() {
 
-        this.load.image("tuiles_jeu03", "assets/e/tuiles_jeu.png");
+        // chargement tuiles de jeu
+        this.load.image("tile_set02", "assets/tile/Tile_set.png");
+
         // chargement de la carte
-        this.load.tilemapTiledJSON("map03", "assets/e/map03.json");
+        this.load.tilemapTiledJSON("bibli", "assets/tile/bibli.json");
     }
 
 
@@ -29,27 +31,36 @@ export default class manoir extends Phaser.Scene {
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 
         console.log(this)
-        // chargement de la carte
-        const carteDuNiveau = this.add.tilemap("map03");
 
-        const tileset = carteDuNiveau.addTilesetImage(
-            "tuiles_jeu",
-            "tuiles_jeu03"
+        
+
+        // chargement de la carte
+        const map02 = this.add.tilemap("bibli");
+    
+        // chargement du jeu de tuiles
+        const tileset = map02.addTilesetImage(
+          "Tile_set", // Nom du tiled dans dossier
+          "tile_set02" // Nom du tiled donner plus haut pour le rapel
         );
 
-        // chargement du calque background_02 (les élements qui passent devant le joueur)
-        const imp2 = carteDuNiveau.createLayer(
-            "imp2",
-            tileset
-            );
 
-        // chargement du calque background_principal_01 (platfromes)
-        const sortie_layer02 = carteDuNiveau.createLayer(
+        // chargement du changement de zone
+        const sortie_layer02 = map02.createLayer(
             "sortie_layer02",
             tileset
+        ); 
+
+        const sol_bibli = map02.createLayer( // nom donner au calque si besoin de le rapeller dans le code
+            "Sol", // Nom du calque tiled
+            tileset
         );
 
-        this.player = new Player(this, 90,960, 'perso');
+        const mur_bibli = map02.createLayer( // nom donner au calque si besoin de le rapeller dans le code
+            "mur", // Nom du calque tiled
+            tileset
+        );
+
+        this.player = new Player(this, 7300,3500, 'perso');
 
         sortie_layer02.setCollisionByExclusion(-1, true);
         this.physics.add.collider(this.player, sortie_layer02, () => {
@@ -59,6 +70,20 @@ export default class manoir extends Phaser.Scene {
                 currency: 0,
             });
         })
+
+        //COLLIDER JOUEURS AVEC MAP
+        this.physics.add.collider(this.player, mur_bibli);
+
+        //Collisions avec tileset
+        mur_bibli.setCollisionByExclusion(-1, true);
+
+
+        //Initialisation de la caméra et des limites de jeu
+        this.cameras.main.setBounds(0, 0, 7680, 7680);
+        this.cameras.main.zoom = 0.65;
+        this.physics.world.setBounds(0, 0, 7680, 7680);
+        //Mise en place de la caméra qui suit le joueur
+        this.cameras.main.startFollow(this.player);
     }
 
 
