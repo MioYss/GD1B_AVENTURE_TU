@@ -103,7 +103,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         ennemi.hp -= 1; 
         if(ennemi.hp <= 0){
 
-            ennemi.scene.groupe_soins.create(ennemi.x, ennemi.y, 'serpent'); // drop de soin
+            ennemi.scene.groupe_soins.create(ennemi.x, ennemi.y, 'soin'); // drop de soin
 
             ennemi.destroy(); 
         }

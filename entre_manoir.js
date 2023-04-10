@@ -29,11 +29,13 @@ export default class entre_manoir extends Phaser.Scene {
         { frameWidth: 256, frameHeight: 256 })
         ;
 
-    this.load.image("serpent", "assets/snake01.png"); //Sprite serpent
+    this.load.image("book", "assets/book.png"); //Sprite book
 
     this.load.image("baton01", "assets/baton01.png"); //Sprite baton
 
     this.load.image("sprite_tir", "assets/projectile.png"); //Sprite tir
+
+    this.load.image("soin", "assets/snake01.png"); //Sprite soin
 
     //UI
     this.load.image('hp3', 'assets/UI/ui_pv03.png',) // Hp3
@@ -122,7 +124,7 @@ export default class entre_manoir extends Phaser.Scene {
         //Creation des ennemis à partir du layer objet dans Tiled
         map.getObjectLayer('ennemis').objects.forEach((objet) => {
 
-            this.groupe_ennemis.create(objet.x, objet.y, 'serpent'); 
+            this.groupe_ennemis.create(objet.x, objet.y, 'book'); 
 
         });
 
@@ -131,7 +133,7 @@ export default class entre_manoir extends Phaser.Scene {
         // pour chaque enfant ennemi du calque
         this.groupe_ennemis.children.each(function(child) {
             
-            child.setScale(8);
+            child.setScale(0.6);
 
             child.body.allowGravity = false;
             child.body.immovable = true; 
