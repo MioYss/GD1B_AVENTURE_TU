@@ -1,8 +1,12 @@
 TOUCHE DANS LE JEU :
 
+Les contrôles peuvent être clavier ou manettes selon le joueur :
+
+Croix directionnelle à la manette. Touches directionnelles au clavier
+
 Fleches directionnel = Mouvement;
-        A            = Tir;
-        E            = Interaction / Ramasser;
+        A / X        = Tir;
+        E / A        = Interaction / Ramasser;
 
 -----------------------
 Juny la petite sorcière doit aller récuperer les parchemins voler.
