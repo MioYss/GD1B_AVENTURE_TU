@@ -24,6 +24,7 @@ export default class salle_01 extends Phaser.Scene {
         this.load.tilemapTiledJSON("manoir_salle_01", "assets/tile/manoir_salle_01.json");
 
 
+        this.load.image("book", "assets/book.png"); //Sprite book
 
         this.load.image("baton01", "assets/baton01.png"); //Sprite baton
 
@@ -99,6 +100,7 @@ export default class salle_01 extends Phaser.Scene {
         );
 
         this.player = new Player (this, 1920,3500, 'perso');
+        this.player.setSize(150, 230, true);
 
         sortie_layer_03.setCollisionByExclusion(-1, true);
         this.physics.add.collider(this.player, sortie_layer_03, () => {
@@ -140,7 +142,22 @@ export default class salle_01 extends Phaser.Scene {
         // Placement UI
         this.ui_hp = this.add.image(-290, -140, "hp3").setOrigin(0,0).setScale(1.4);
         this.ui_hp.setScrollFactor(0);
-        this.ui_hp.setDepth(10);        
+        this.ui_hp.setDepth(10);     
+        
+        //Creation tir 
+        this.groupe_bullets = this.physics.add.group();
+
+        this.groupe_ennemis = this.physics.add.group();
+
+        this.groupe_soins = this.physics.add.group();
+
+        //Creation des ennemis à partir du layer objet dans Tiled
+        map03.getObjectLayer('ennemi').objects.forEach((objet) => {
+
+            this.groupe_ennemis.create(objet.x, objet.y, 'book'); 
+
+        });
+        
 
     }
 

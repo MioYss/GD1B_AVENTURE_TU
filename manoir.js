@@ -4,6 +4,11 @@ import Player from "./player.js";
 var keyE;
 var keyA;
 
+let plateforme_mobile; 
+let tween_mouvement; 
+let serpent;
+let sortie_layer;
+let setCollisionByExclusion = false;
 
 export default class manoir extends Phaser.Scene {
     constructor() {
@@ -11,14 +16,6 @@ export default class manoir extends Phaser.Scene {
         super("manoir");
 
 
-    }
-
-    //INITIALISATION DES DONNEES EN CHANGEANT DE SCENE
-    init(data){ 
-        this.positionX = data.x;
-        this.positionY = data.y;
-        this.piece = data.piece;
-        this.has_baton = true
     }
 
 
@@ -34,7 +31,7 @@ export default class manoir extends Phaser.Scene {
 
 
         this.load.image("baton01", "assets/baton01.png"); //Sprite baton
-
+        this.load.image("book", "assets/book.png"); //Sprite book
         this.load.image("sprite_tir", "assets/projectile.png"); //Sprite tir
     
         //UI
@@ -81,8 +78,11 @@ export default class manoir extends Phaser.Scene {
             tileset
         );
 
+        //CREATION BATON
+        this.baton01 = this.physics.add.sprite(254, 3584, 'baton01');
 
         this.player = new Player(this, 7300,3500, 'perso');
+        this.player.setSize(150, 230, true);
 
         sortie_layer02.setCollisionByExclusion(-1, true);
         this.physics.add.collider(this.player, sortie_layer02, () => {
@@ -108,9 +108,64 @@ export default class manoir extends Phaser.Scene {
         this.cameras.main.startFollow(this.player);
 
 
+
         //Creation tir 
         this.groupe_bullets = this.physics.add.group();
 
+        this.groupe_ennemis = this.physics.add.group();
+
+        this.groupe_soins = this.physics.add.group();
+
+        //Creation des ennemis à partir du layer objet dans Tiled
+        map02.getObjectLayer('ennemi_bibli').objects.forEach((objet) => {
+
+            this.groupe_ennemis.create(objet.x, objet.y, 'book'); 
+
+        });
+
+
+
+        // pour chaque enfant ennemi du calque
+        this.groupe_ennemis.children.each(function(child) {
+            
+            child.setScale(0.6);
+
+            child.body.allowGravity = false;
+            child.body.immovable = true; 
+
+            child.hp = 3; 
+        
+            tween_mouvement = this.tweens.add({
+                targets: [child],  // on applique le tween sur platefprme_mobile
+                paused: false, // de base le tween est en pause
+                ease: "Linear",  // concerne la vitesse de mouvement : linéaire ici 
+                duration: 2000,  // durée de l'animation pour trajet
+                yoyo: true,   // mode yoyo : une fois terminé on "rembobine" le déplacement 
+                x: "-=300",   // on va déplacer la plateforme de 300 pixel vers le haut par rapport a sa position
+                delay: 0,     // délai avant le début du tween une fois ce dernier activé
+                hold: 1000,   // délai avant le yoyo
+                repeatDelay: 1000, // delay 
+                repeat: -1 // répétition infinie 
+            });
+
+          }, this);
+
+
+        // Collider / Overlap
+        this.physics.add.collider(this.player, this.groupe_ennemis, this.player.recoit_degats);
+
+        this.physics.add.collider(this.groupe_ennemis, this.groupe_bullets, this.player.inflige_degats);
+
+        this.physics.add.collider(mur, this.groupe_bullets, this.player.annihilation); // destrction tir quand touche mur
+
+        this.physics.add.overlap(this.player, this.baton01 , this.player.obtain_baton);
+
+        this.physics.add.overlap(this.player, this.groupe_soins , this.player.soigne);
+
+        // Placement UI
+        this.ui_hp = this.add.image(-290, -140, "hp3").setOrigin(0,0).setScale(1.4);
+        this.ui_hp.setScrollFactor(0);
+        this.ui_hp.setDepth(10);
 
     }
 
@@ -125,6 +180,17 @@ export default class manoir extends Phaser.Scene {
             console.log ("test A");
             this.player.attaque(this, this.sprite_tir);
             console.log ("je tire");
+        }
+
+        //HP player UI
+        if(this.player.hp == 3){
+            this.ui_hp.setTexture("hp3");
+        }
+        if(this.player.hp == 2){
+            this.ui_hp.setTexture("hp2");
+        }
+        if(this.player.hp == 1){
+            this.ui_hp.setTexture("hp1");
         }
     }
 

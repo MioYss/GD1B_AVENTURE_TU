@@ -35,7 +35,7 @@ export default class entre_manoir extends Phaser.Scene {
 
     this.load.image("sprite_tir", "assets/projectile.png"); //Sprite tir
 
-    this.load.image("soin", "assets/snake01.png"); //Sprite soin
+    this.load.image("soin", "assets/potion.png"); //Sprite soin
 
     //UI
     this.load.image('hp3', 'assets/UI/ui_pv03.png',) // Hp3
