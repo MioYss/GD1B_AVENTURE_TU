@@ -74,12 +74,13 @@ export default class manoir extends Phaser.Scene {
         const sol_bibli = map02.createLayer( // nom donner au calque si besoin de le rapeller dans le code
             "Sol", // Nom du calque tiled
             tileset
-        );
-
-        const mur_bibli = map02.createLayer( // nom donner au calque si besoin de le rapeller dans le code
+        );       
+        
+        const mur = map02.createLayer( // nom donner au calque si besoin de le rapeller dans le code
             "mur", // Nom du calque tiled
             tileset
         );
+
 
         this.player = new Player(this, 7300,3500, 'perso');
 
@@ -87,16 +88,16 @@ export default class manoir extends Phaser.Scene {
         this.physics.add.collider(this.player, sortie_layer02, () => {
         
             console.log ("test")
-            this.scene.switch("entre_manoir", {
+            this.scene.switch("salle_01", {
                 currency: 0,
             });
         })
 
         //COLLIDER JOUEURS AVEC MAP
-        this.physics.add.collider(this.player, mur_bibli);
+        this.physics.add.collider(this.player, mur);
 
         //Collisions avec tileset
-        mur_bibli.setCollisionByExclusion(-1, true);
+        mur.setCollisionByExclusion(-1, true);
 
 
         //Initialisation de la caméra et des limites de jeu

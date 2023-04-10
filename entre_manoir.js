@@ -13,13 +13,7 @@ export default class entre_manoir extends Phaser.Scene {
     constructor() {
         
         super("entre_manoir");
-    }
-    
-    //INITIALISATION DES DONNEES EN CHANGEANT DE SCENE
-    init(data){ 
-        this.positionX = data.x;
-        this.positionY = data.y;
-        this.piece = data.piece;
+
     }
 
 
@@ -51,6 +45,8 @@ export default class entre_manoir extends Phaser.Scene {
 
 
     create() {
+
+        //this.scene.start('salle_01', { hp: 3 })
 
         keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -109,8 +105,9 @@ export default class entre_manoir extends Phaser.Scene {
         this.physics.add.collider(this.player, sortie_layer, () => {
         
             console.log ("test")
-            this.scene.switch("manoir", {
-                currency: 0,
+            this.scene.start("salle_01", {
+                x : 1920,
+                y : 3500,
             });
         });
 
@@ -193,6 +190,7 @@ export default class entre_manoir extends Phaser.Scene {
 
             console.log ("test A");
             this.player.attaque(this, this.sprite_tir);
+            console.log (this)
         }
 
         //HP player UI
@@ -204,7 +202,6 @@ export default class entre_manoir extends Phaser.Scene {
         }
         if(this.player.hp == 1){
             this.ui_hp.setTexture("hp1");
-
         }
     }
 

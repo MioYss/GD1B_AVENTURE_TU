@@ -23,7 +23,7 @@ export default class menu extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(this.cursors.space)){
             this.scene.start("entre_manoir", {
                 x : 1200, 
-                y : 1300,  
+                y : 1300,
             });
         }
     }
